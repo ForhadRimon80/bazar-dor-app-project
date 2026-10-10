@@ -8,7 +8,7 @@ interface INavLinkItem {
 }
 
 const NavLink = async () => {
-  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/categories");
+  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/categories");
   const data: INavLinkItem[] = await res.json();
   if (!res.ok) {
     throw new Error("Failed to fetch workouts");

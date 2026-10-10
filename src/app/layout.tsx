@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-// import Marquee from "@/components/Marquee";
+import Marquee from "@/components/Marquee";
 
 const notoSansBengali = Noto_Sans_Bengali({
   subsets: ["latin", "bengali"],
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" data-theme="light" className={`${notoSansBengali.className}  h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#F0F5F0]">
         <Header />
-        {/* <Marquee /> */}
+        <Marquee />
         <main className="flex flex-1 flex-col container mx-auto">{children}</main>
       </body>
     </html>
