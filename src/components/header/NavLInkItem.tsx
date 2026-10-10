@@ -16,7 +16,7 @@ const NavLInkItem = ({ slug, title, icon }: INavLinkItem) => {
   const isActive = pathname === href;
 
   return (
-    <Link href={href} className={`font-normal text-[15px] inline-flex items-center gap-1 rounded-[10px] pl-3 pr-3.5 pt-2 pb-1.5 transition-colors ${isActive ? "bg-[#05893E] text-white" : "text-black hover:bg-gray-200"}`}>
+    <Link href={href} className={`inline-flex shrink-0 items-center gap-0.5 whitespace-nowrap rounded-[10px] pl-2 pr-2.5 pt-1.5 pb-1 text-xs font-normal transition-colors sm:gap-1 sm:pl-2.5 sm:pr-3 sm:pt-2 sm:pb-1.5 sm:text-sm lg:pl-3 lg:pr-3.5 lg:text-[15px] ${isActive ? "bg-[#05893E] text-white" : "text-black hover:bg-gray-200"}`}>
       <span>{icon}</span>
       <span>{title}</span>
     </Link>

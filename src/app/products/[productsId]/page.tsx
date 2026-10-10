@@ -57,6 +57,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productsId: st
     price.toLocaleString("bn-BD", {
       maximumFractionDigits: 2,
     });
+
   const formatPriceList = (price: number) => Math.round(price).toLocaleString("bn-BD");
 
   const priceDifference = Math.abs(product.today - product.yesterday);
@@ -71,42 +72,49 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productsId: st
   const isDown = product.change.dir === "down";
 
   return (
-    <section className="mx-auto w-full max-w-5xl py-8">
+    <section className="mx-auto w-full max-w-5xl py-4 sm:py-6 lg:py-8">
       {/* Breadcrumb */}
-      <div className="mb-6 flex items-center gap-2 text-sm text-[#1D271F]">
+      <div className="mb-4 flex flex-wrap items-center gap-1.5 text-xs text-[#1D271F] sm:mb-5 sm:gap-2 sm:text-sm lg:mb-6">
         <Link href="/" className="hover:text-[#05893E]">
           হোম
         </Link>
-        <FaChevronRight className="text-xs text-gray-500" />
+
+        <FaChevronRight className="shrink-0 text-[10px] text-gray-500 sm:text-xs" />
+
         <Link href={`/category/${product.category}`} className="hover:text-[#05893E]">
           {product.categoryNameBn}
         </Link>
-        <FaChevronRight className="text-xs text-gray-500" />
+
+        <FaChevronRight className="shrink-0 text-[10px] text-gray-500 sm:text-xs" />
+
         <span className="font-medium">{product.nameBn}</span>
       </div>
 
       {/* Product Summary */}
-      <div className="mb-5 flex flex-col gap-5 rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
-          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#F0F5F0] text-4xl">{product.image}</span>
+      <div className="mb-4 flex flex-col gap-3 rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-3 sm:mb-5 sm:gap-4 sm:p-4 lg:gap-5 lg:p-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#F0F5F0] text-2xl sm:h-14 sm:w-14 sm:text-3xl lg:h-16 lg:w-16 lg:text-4xl">{product.image}</span>
 
-          <div>
-            <h1 className="text-xl font-bold text-[#1D271F] sm:text-2xl">{product.nameBn}</h1>
+          <div className="min-w-0">
+            <h1 className="text-lg font-bold text-[#1D271F] sm:text-xl lg:text-2xl">{product.nameBn}</h1>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-xs text-gray-500 sm:text-sm">
               প্রতি {unit} · {product.categoryNameBn}
             </p>
 
-            <p className="mt-2 text-sm text-[#1D271F]">{isUp ? `গতকালের তুলনায় আজ দাম বেড়েছে ${formatPrice(priceDifference)} টাকা` : isDown ? `গতকালের তুলনায় আজ দাম কমেছে ${formatPrice(priceDifference)} টাকা` : "গতকালের তুলনায় আজ দাম অপরিবর্তিত"}</p>
+            <p className="mt-2 text-xs text-[#1D271F] sm:text-sm">{isUp ? `গতকালের তুলনায় আজ দাম বেড়েছে ${formatPrice(priceDifference)} টাকা` : isDown ? `গতকালের তুলনায় আজ দাম কমেছে ${formatPrice(priceDifference)} টাকা` : "গতকালের তুলনায় আজ দাম অপরিবর্তিত"}</p>
           </div>
         </div>
 
         {/* Today's Price */}
-        <div className="flex min-w-28 flex-col items-center justify-center rounded-xl bg-[#F0F5F0] p-4">
+        <div className="flex min-w-28 flex-col items-center justify-center rounded-xl bg-[#F0F5F0] p-3 sm:p-4">
           <p className="text-xs text-gray-500">আজকের দাম</p>
-          <h2 className="mt-1 text-3xl font-bold text-[#1D271F]">{formatPrice(product.today)}</h2>
+
+          <h2 className="mt-1 text-2xl font-bold text-[#1D271F] sm:text-3xl">{formatPrice(product.today)}</h2>
+
           <p className="text-xs text-gray-500">টাকা / {unit}</p>
-          <span className={`mt-2 inline-flex items-center gap-1 text-sm font-semibold ${isUp ? "text-[#D03739]" : isDown ? "text-[#1A9951]" : "text-[#1D271F]"}`}>
+
+          <span className={`mt-2 inline-flex items-center gap-1 text-xs font-semibold sm:text-sm ${isUp ? "text-[#D03739]" : isDown ? "text-[#1A9951]" : "text-[#1D271F]"}`}>
             {isUp && <FaCaretUp />}
             {isDown && <FaCaretDown />}
             {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
@@ -115,52 +123,52 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productsId: st
       </div>
 
       {/* Price Summary and Market Table */}
-      <div className="rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-5">
-        <h2 className="mb-4 text-lg font-bold text-[#1D271F]">দামের সারসংক্ষেপ</h2>
+      <div className="rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-3 sm:p-4 lg:p-5">
+        <h2 className="mb-3 text-base font-bold text-[#1D271F] sm:mb-4 sm:text-lg">দামের সারসংক্ষেপ</h2>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <div className="rounded-xl border border-[#E1E8E1] p-4">
-            <p className="text-sm text-gray-500">সর্বনিম্ন দাম</p>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
+          <div className="rounded-xl border border-[#E1E8E1] p-3 sm:p-4">
+            <p className="text-xs text-gray-500 sm:text-sm">সর্বনিম্ন দাম</p>
 
-            <p className="mt-1 text-2xl font-bold text-[#1A9951]">{formatPrice(minPrice)} টাকা</p>
+            <p className="mt-1 text-xl font-bold text-[#1A9951] sm:text-2xl">{formatPrice(minPrice)} টাকা</p>
 
             <p className="mt-1 text-xs text-[#1D271F]">সবচেয়ে কম দামের বাজার</p>
           </div>
 
-          <div className="rounded-xl border border-[#E1E8E1] p-4">
-            <p className="text-sm text-gray-500">সর্বাধিক দাম</p>
+          <div className="rounded-xl border border-[#E1E8E1] p-3 sm:p-4">
+            <p className="text-xs text-gray-500 sm:text-sm">সর্বাধিক দাম</p>
 
-            <p className="mt-1 text-2xl font-bold text-[#D03739]">{formatPrice(maxPrice)} টাকা</p>
+            <p className="mt-1 text-xl font-bold text-[#D03739] sm:text-2xl">{formatPrice(maxPrice)} টাকা</p>
 
             <p className="mt-1 text-xs text-[#1D271F]">সবচেয়ে বেশি দামের বাজার</p>
           </div>
 
-          <div className="rounded-xl border border-[#E1E8E1] p-4">
-            <p className="text-sm text-gray-500">গড় দাম</p>
+          <div className="rounded-xl border border-[#E1E8E1] p-3 sm:p-4">
+            <p className="text-xs text-gray-500 sm:text-sm">গড় দাম</p>
 
-            <p className="mt-1 text-2xl font-bold text-[#05893E]">{formatPriceList(avgPrice)} টাকা</p>
+            <p className="mt-1 text-xl font-bold text-[#05893E] sm:text-2xl">{formatPriceList(avgPrice)} টাকা</p>
 
             <p className="mt-1 text-xs text-[#1D271F]">প্রতি {unit}-এর হিসাবে</p>
           </div>
         </div>
 
         {/* Market Prices */}
-        <h2 className="mb-4 mt-7 text-lg font-bold text-[#1D271F]">বাজারভিত্তিক আজকের দাম</h2>
+        <h2 className="mb-3 mt-5 text-base font-bold text-[#1D271F] sm:mb-4 sm:mt-6 sm:text-lg lg:mt-7">বাজারভিত্তিক আজকের দাম</h2>
 
         <div className="overflow-x-auto rounded-xl border border-[#E1E8E1]">
-          <table className="w-full min-w-150 border-collapse text-left text-sm">
+          <table className="w-full min-w-150 border-collapse text-left text-xs sm:text-sm">
             <thead className="bg-[#FAFCFA] text-gray-500">
               <tr>
-                <th className="px-4 py-3 font-medium">বাজার</th>
+                <th className="px-3 py-2 font-medium sm:px-4 sm:py-3">বাজার</th>
 
-                <th className="px-4 py-3 font-medium">বিভাগ</th>
+                <th className="px-3 py-2 font-medium sm:px-4 sm:py-3">বিভাগ</th>
 
-                <th className="px-4 py-3 text-right font-medium">সর্বনিম্ন</th>
+                <th className="px-3 py-2 text-right font-medium sm:px-4 sm:py-3">সর্বনিম্ন</th>
 
-                <th className="px-4 py-3 text-right font-medium">সর্বাধিক</th>
+                <th className="px-3 py-2 text-right font-medium sm:px-4 sm:py-3">সর্বাধিক</th>
 
-                <th className="px-4 py-3 text-right font-medium">গড়</th>
+                <th className="px-3 py-2 text-right font-medium sm:px-4 sm:py-3">গড়</th>
               </tr>
             </thead>
 
@@ -170,15 +178,15 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productsId: st
 
                 return (
                   <tr key={`${market.market}-${index}`} className={`border-t border-[#E1E8E1] ${index % 2 === 0 ? "bg-[#FAFCFA]" : "bg-[#F0F5F0]"}`}>
-                    <td className="px-4 py-3">{market.market}</td>
+                    <td className="px-3 py-2 sm:px-4 sm:py-3">{market.market}</td>
 
-                    <td className="px-4 py-3">{market.division}</td>
+                    <td className="px-3 py-2 sm:px-4 sm:py-3">{market.division}</td>
 
-                    <td className="px-4 py-3 text-right">{formatPrice(market.min)} টাকা</td>
+                    <td className="px-3 py-2 text-right sm:px-4 sm:py-3">{formatPrice(market.min)} টাকা</td>
 
-                    <td className="px-4 py-3 text-right">{formatPrice(market.max)} টাকা</td>
+                    <td className="px-3 py-2 text-right sm:px-4 sm:py-3">{formatPrice(market.max)} টাকা</td>
 
-                    <td className="px-4 py-3 text-right font-semibold">{formatPrice(average)} টাকা</td>
+                    <td className="px-3 py-2 text-right font-semibold sm:px-4 sm:py-3">{formatPrice(average)} টাকা</td>
                   </tr>
                 );
               })}

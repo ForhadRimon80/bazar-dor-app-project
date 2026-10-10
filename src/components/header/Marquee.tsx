@@ -35,25 +35,27 @@ const Marquee = async () => {
 
   return (
     <div className="border-y border-[#E1E8E1] bg-[#FAFCFA]">
-      <MarqueeText className="text-black" direction="right" duration={20}>
+      <MarqueeText className="text-black" direction="right" duration={10}>
         {data.map((item) => (
           <Link key={item.id} href={`/products/${item.id}`}>
-            <div className="inline-flex items-center gap-2 border-r border-[#F0F5F0] px-4 py-1.5 text-[14px] whitespace-nowrap">
+            <div className="inline-flex items-center gap-1 sm:gap-1.5 lg:gap-2 border-r border-[#F0F5F0] px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 text-xs sm:text-[13px] lg:text-[14px] whitespace-nowrap">
               <span>{item.image}</span>
 
               <span className="font-medium">{item.nameBn}</span>
 
               <span>
-                {item.today.toLocaleString("bn-BD")} টাকা/{units[item.unit] ?? item.unit}
+                {item.today.toLocaleString("bn-BD")} টাকা/
+                {units[item.unit] ?? item.unit}
               </span>
+
               {item.change.dir === "up" ? (
                 <span className="inline-flex items-center gap-1 font-semibold text-[#D03739]">
-                  <FaCaretUp className="text-2xl" />
+                  <FaCaretUp className="text-base sm:text-xl lg:text-2xl" />
                   {item.change.pct.toLocaleString("bn-BD")}%
                 </span>
               ) : item.change.dir === "down" ? (
                 <span className="inline-flex items-center gap-1 font-semibold text-[#1A9951]">
-                  <FaCaretDown className="text-2xl -translate-y-0.5" />
+                  <FaCaretDown className="-translate-y-0.5 text-base sm:text-xl lg:text-2xl" />
                   {Math.abs(item.change.pct).toLocaleString("bn-BD")}%
                 </span>
               ) : (

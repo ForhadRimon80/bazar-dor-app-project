@@ -9,14 +9,16 @@ interface INavLinkItem {
 
 const NavLink = async () => {
   const res = await fetch("https://openapi.programming-hero.com/api/bazardor/categories");
-  const data: INavLinkItem[] = await res.json();
+
   if (!res.ok) {
-    throw new Error("Failed to fetch workouts");
+    throw new Error("Failed to fetch categories");
   }
+
+  const data: INavLinkItem[] = await res.json();
+
   return (
-    // <Link href="/#all-products"></Link>
-    <div className="bg-[#FAFCFA] py-2">
-      <div className="container mx-auto flex items-center gap-1">
+    <div className="overflow-x-auto py-2 bg-[#FAFCFA] scrollbar-none [&::-webkit-scrollbar]:hidden lg:overflow-visible">
+      <div className="container px-2 mx-auto flex w-max items-center gap-1 whitespace-nowrap lg:w-auto">
         {data.map((name) => (
           <NavLInkItem key={name.id} slug={name.slug} title={name.nameBn} icon={name.icon} />
         ))}
@@ -26,5 +28,3 @@ const NavLink = async () => {
 };
 
 export default NavLink;
-
-// https://api.abcz.workers.dev/api/bazardor/products?category=dal
