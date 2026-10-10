@@ -8,12 +8,13 @@ interface INavLinkItem {
 }
 
 const NavLink = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/categories");
+  const res = await fetch("https://openapi.programming-hero.com/api/bazardor/categories");
   const data: INavLinkItem[] = await res.json();
   if (!res.ok) {
     throw new Error("Failed to fetch workouts");
   }
   return (
+    // <Link href="/#all-products"></Link>
     <div className="bg-[#FAFCFA] py-2">
       <div className="container mx-auto flex items-center gap-1">
         {data.map((name) => (
@@ -25,3 +26,5 @@ const NavLink = async () => {
 };
 
 export default NavLink;
+
+// https://api.abcz.workers.dev/api/bazardor/products?category=dal

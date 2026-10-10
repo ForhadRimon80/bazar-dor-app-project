@@ -17,7 +17,7 @@ const Banner = () => {
 
           <p className="mb-6 max-w-lg text-sm leading-6 text-gray-500">চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
 
-          <Link href="/products" className="btn flex w-fit mx-auto md:mx-0 border-none font-medium rounded-lg bg-[#05893E] px-6 text-white hover:bg-[#04612c]">
+          <Link href="/#all-products" className="btn flex w-fit mx-auto md:mx-0 border-none font-medium rounded-lg bg-[#05893E] px-6 text-white hover:bg-[#04612c]">
             সব পণ্য দেখুন
           </Link>
         </div>

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Marquee from "@/components/Marquee";
+import Header from "@/components/header/Header";
+import Marquee from "@/components/header/Marquee";
 import Footer from "@/components/Footer";
 
 const notoSansBengali = Noto_Sans_Bengali({
@@ -26,4 +26,3 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
-      

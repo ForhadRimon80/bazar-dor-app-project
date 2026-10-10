@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa6";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
@@ -15,7 +16,7 @@ interface IProduct {
 }
 
 const Marquee = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products", {
+  const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products", {
     next: { revalidate: 300 },
   });
 
@@ -36,7 +37,8 @@ const Marquee = async () => {
     <div className="border-y border-[#E1E8E1] bg-[#FAFCFA]">
       <MarqueeText className="text-black" direction="right" duration={20}>
         {data.map((item) => (
-            <div key={item.id} className="inline-flex items-center gap-2 border-r border-[#F0F5F0] px-4 py-1.5 text-[14px] whitespace-nowrap">
+          <Link key={item.id} href={`/products/${item.id}`}>
+            <div className="inline-flex items-center gap-2 border-r border-[#F0F5F0] px-4 py-1.5 text-[14px] whitespace-nowrap">
               <span>{item.image}</span>
 
               <span className="font-medium">{item.nameBn}</span>
@@ -58,7 +60,8 @@ const Marquee = async () => {
                 <span className="font-semibold text-black">০.০%</span>
               )}
             </div>
-          ))}
+          </Link>
+        ))}
       </MarqueeText>
     </div>
   );

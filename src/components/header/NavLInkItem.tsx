@@ -12,7 +12,7 @@ interface INavLinkItem {
 const NavLInkItem = ({ slug, title, icon }: INavLinkItem) => {
   const pathname = usePathname();
 
-  const href = `/${slug}`;
+  const href = `/category/${slug}`;
   const isActive = pathname === href;
 
   return (
