@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavLink from "./NavLink";
+import UserInfo from "../UserInfo";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -25,11 +26,7 @@ const Header = () => {
           </Link>
 
           {/* Right Buttons */}
-          <div className="flex items-center justify-end gap-1 sm:gap-2 lg:col-start-3 lg:gap-3">
-            <button className="btn btn-ghost btn-sm rounded-md p-2 text-[11px] font-bold text-neutral-700 transition-colors hover:text-[#05893E] sm:p-3 sm:text-xs lg:p-5 lg:text-[14px]">সাইন ইন</button>
-
-            <button className="btn btn-sm rounded-md border-none bg-[#05893E] p-2 text-[11px] font-medium text-white transition-colors hover:bg-[#04612c] sm:p-3 sm:text-xs lg:p-5 lg:text-[14px]">সাইন আপ</button>
-          </div>
+          <UserInfo />
         </div>
       </header>
 
