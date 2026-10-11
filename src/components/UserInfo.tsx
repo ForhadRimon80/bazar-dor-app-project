@@ -93,7 +93,7 @@ const UserInfo = () => {
               আমার প্রোফাইল
             </Link>
 
-            <button type="button" onClick={handleSignOut} className="flex items-center gap-2 text-left text-sm text-red-600 transition-colors hover:text-red-700">
+            <button type="button" onClick={handleSignOut} className="flex cursor-pointer items-center gap-2 text-left text-sm text-red-600 transition-colors hover:text-red-700">
               <FaArrowRightFromBracket className="size-3.5" />
               সাইন আউট
             </button>
