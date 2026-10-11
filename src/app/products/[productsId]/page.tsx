@@ -111,14 +111,21 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ productsId: st
           <p className="text-xs text-gray-500">আজকের দাম</p>
 
           <h2 className="mt-1 text-2xl font-bold text-[#1D271F] sm:text-3xl">{formatPrice(product.today)}</h2>
-
           <p className="text-xs text-gray-500">টাকা / {unit}</p>
 
-          <span className={`mt-2 inline-flex items-center gap-1 text-xs font-semibold sm:text-sm ${isUp ? "text-[#D03739]" : isDown ? "text-[#1A9951]" : "text-[#1D271F]"}`}>
-            {isUp && <FaCaretUp />}
-            {isDown && <FaCaretDown />}
-            {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
-          </span>
+          {product.change.dir === "up" ? (
+            <span className="inline-flex items-center gap-1 font-semibold text-[#D03739]">
+              <FaCaretUp className="text-base sm:text-xl lg:text-2xl" />
+              {product.change.pct.toLocaleString("bn-BD")}%
+            </span>
+          ) : product.change.dir === "down" ? (
+            <span className="inline-flex items-center gap-1 font-semibold text-[#1A9951]">
+              <FaCaretDown className="-translate-y-0.5 text-base sm:text-xl lg:text-2xl" />
+              {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
+            </span>
+          ) : (
+            <span className="font-semibold text-black">- ০.০%</span>
+          )}
         </div>
       </div>
 

@@ -47,7 +47,7 @@ const SignUpPage = () => {
       });
       return;
     }
-    router.push("/");
+    router.push("/signin");
   };
 
   // Handle social sign in

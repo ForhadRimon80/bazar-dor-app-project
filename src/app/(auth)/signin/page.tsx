@@ -33,12 +33,7 @@ const SignInPage = () => {
         indicator: <FaCircleXmark className="text-red-600" />,
         description: error?.message,
       });
-    } else {
-      toast.success(<span className="font-bold text-green-600">Signed In Successfully</span>, {
-        indicator: <FcGoogle className="text-green-600" />,
-        description: "You have successfully signed in.",
-      });
-    }
+    } 
   };
 
   // Handle social sign in

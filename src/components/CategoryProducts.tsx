@@ -67,11 +67,19 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
             <div className="flex flex-wrap items-end justify-between gap-2 lg:flex-nowrap">
               <p className="text-[16px] font-bold sm:text-lg lg:text-xl">{product.today.toLocaleString("bn-BD")} টাকা</p>
 
-              <span className={`inline-flex shrink-0 items-center gap-1 rounded-full bg-[#F0F5F0] px-2 py-1 text-xs font-semibold ${product.change.dir === "up" ? "text-[#D03739]" : product.change.dir === "down" ? "text-[#1A9951]" : "text-black"}`}>
-                {product.change.dir === "up" && <FaCaretUp />}
-                {product.change.dir === "down" && <FaCaretDown />}
-                {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
-              </span>
+              {product.change.dir === "up" ? (
+                <span className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#D03739] sm:text-sm lg:text-base">
+                  <FaCaretUp className="text-base sm:text-lg lg:text-xl" />
+                  {product.change.pct.toLocaleString("bn-BD")}%
+                </span>
+              ) : product.change.dir === "down" ? (
+                <span className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#1A9951] sm:text-sm lg:text-base">
+                  <FaCaretDown className="-translate-y-0.5 text-base sm:text-lg lg:text-xl" />
+                  {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
+                </span>
+              ) : (
+                <span className="text-xs font-semibold text-black sm:text-sm lg:text-base">-০.০%</span>
+              )}
             </div>
           </Link>
         ))}

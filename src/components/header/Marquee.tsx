@@ -59,7 +59,7 @@ const Marquee = async () => {
                   {Math.abs(item.change.pct).toLocaleString("bn-BD")}%
                 </span>
               ) : (
-                <span className="font-semibold text-black">০.০%</span>
+                <span className="font-semibold text-black">- ০.০%</span>
               )}
             </div>
           </Link>

@@ -73,7 +73,7 @@ const AllProducts = async () => {
                     {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
                   </span>
                 ) : (
-                  <span className="text-xs font-semibold text-black sm:text-sm lg:text-base">০.০%</span>
+                  <span className="text-xs font-semibold text-black sm:text-sm lg:text-base">-০.০%</span>
                 )}
               </div>
             </div>
