@@ -194,7 +194,7 @@ const SignUpPage = () => {
           {/* Sign In Link */}
           <p className="mt-5 text-center text-xs text-gray-500">
             অ্যাকাউন্ট আছে?{" "}
-            <Link href="/sign-in" className="font-semibold text-[#05893E] hover:underline">
+            <Link href="/signin" className="font-semibold text-[#05893E] hover:underline">
               সাইন ইন করুন
             </Link>
           </p>

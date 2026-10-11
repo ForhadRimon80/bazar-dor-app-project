@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🛒 বাজার দর | Bazar Dor
 
-## Getting Started
+A Daily Market Price Tracking Web Application
 
-First, run the development server:
+BazarDor (বাজার দর) is a modern, responsive web application that helps users explore daily market prices of essential products in Bangladesh. Users can browse products by category, compare prices, track price changes, and manage their accounts through a secure authentication system.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js – React framework with App Router
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+React.js – Component-based user interface
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+TypeScript – Type-safe JavaScript development
 
-## Learn More
+Tailwind CSS – Responsive styling
 
-To learn more about Next.js, take a look at the following resources:
+HeroUI – Modern UI components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Better Auth – Authentication and user management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+React Icons – Icons and visual elements
 
-## Deploy on Vercel
+REST API – Fetching market product and category data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✨ Key Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Daily Market Price Tracking-
+
+Browse essential products with their latest available prices, measurement units, and price change indicators showing increases, decreases, or unchanged prices.
+
+2. Category-Based Product Browsing-
+
+Explore products through organized categories such as rice, lentils, vegetables, fish, meat, and spices. Each category includes a dedicated product listing page.
+
+3. Product Details and Price Sorting-
+
+View individual product information and sort category products by price, from lowest to highest or highest to lowest.
+
+4. Secure Authentication and Profile Management-
+
+Sign up and sign in using email/password, Google, or GitHub through Better Auth. Authenticated users can view and update their profile information and securely sign out.
+
+5. Responsive Design and User Experience-
+
+Enjoy a mobile-friendly interface with loading indicators, toast notifications, custom 404 pages, and informative empty states.
+
+Built with Next.js, TypeScript, and Tailwind CSS.
