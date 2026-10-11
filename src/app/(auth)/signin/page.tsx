@@ -31,7 +31,7 @@ const SignInPage = () => {
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Error signing in</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
-        description: error.message,
+        description: error?.message,
       });
     } else {
       toast.success(<span className="font-bold text-green-600">Signed In Successfully</span>, {
@@ -51,7 +51,7 @@ const SignInPage = () => {
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Error signing in</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
-        description: error.message,
+        description: error?.message,
       });
     }
   };
@@ -78,14 +78,8 @@ const SignInPage = () => {
                   type="email"
                   className="w-full"
                   validate={(value) => {
-                    if (value.length < 8) {
-                      return "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে";
-                    }
-                    if (!/[A-Z]/.test(value)) {
-                      return "পাসওয়ার্ডে অন্তত একটি বড় হাতের ইংরেজি অক্ষর থাকতে হবে";
-                    }
-                    if (!/[0-9]/.test(value)) {
-                      return "পাসওয়ার্ডে অন্তত একটি সংখ্যা থাকতে হবে";
+                    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                      return "সঠিক ইমেইল ঠিকানা লিখুন";
                     }
                     return null;
                   }}>

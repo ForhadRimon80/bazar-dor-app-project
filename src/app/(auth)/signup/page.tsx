@@ -43,7 +43,7 @@ const SignUpPage = () => {
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Sign Up Failed</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
-        description: error.message,
+        description: error?.message,
       });
       return;
     }
@@ -60,7 +60,7 @@ const SignUpPage = () => {
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Error signing in</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
-        description: error.message,
+        description: error?.message,
       });
     }
   };

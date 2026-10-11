@@ -7,13 +7,14 @@ import { signOut, updateUser, useSession } from "@/lib/auth-client";
 import { FaUser, FaArrowRightFromBracket, FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 
 const ProfilePage = () => {
-  const { data: session, isPending, refetch } = useSession();
+  const { data: session, refetch } = useSession();
   const router = useRouter();
   const user = session?.user;
 
   // Handle Sign Out
   const handleSignOut = async () => {
     const { error } = await signOut();
+
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Sign Out Failed</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
@@ -21,10 +22,12 @@ const ProfilePage = () => {
       });
       return;
     }
+
     toast.success(<span className="font-bold text-green-600">Signed Out Successfully</span>, {
       indicator: <FaCircleCheck className="text-green-600" />,
       description: "You have successfully signed out.",
     });
+
     router.push("/");
     router.refresh();
   };
@@ -46,6 +49,7 @@ const ProfilePage = () => {
       name: data.name.trim(),
       image: data.image.trim(),
     });
+
     if (error) {
       toast.danger(<span className="font-bold text-red-600">Profile Update Failed</span>, {
         indicator: <FaCircleXmark className="text-red-600" />,
@@ -53,21 +57,14 @@ const ProfilePage = () => {
       });
       return;
     }
+
     await refetch();
+
     toast.success(<span className="font-bold text-green-600">Profile Updated Successfully</span>, {
       indicator: <FaCircleCheck className="text-green-600" />,
       description: "Your profile has been updated successfully.",
     });
   };
-
-  // Loading Session
-  if (isPending || !user) {
-    return (
-      <section className="flex min-h-screen items-center justify-center bg-[#F0F5F0]">
-        <p className="text-sm text-gray-500">প্রোফাইল লোড হচ্ছে...</p>
-      </section>
-    );
-  }
 
   return (
     <section className="min-h-screen bg-[#F0F5F0] px-4 py-12">
@@ -84,7 +81,7 @@ const ProfilePage = () => {
           <div className="flex min-w-0 items-center gap-4">
             {/* Profile Image */}
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-100">
-              {user.image ? (
+              {user?.image ? (
                 <Image src={user.image} alt={user.name} fill sizes="64px" unoptimized className="object-cover" />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">
@@ -95,9 +92,9 @@ const ProfilePage = () => {
 
             {/* User Details */}
             <div className="min-w-0">
-              <h2 className="truncate text-base font-semibold text-[#1D271F]">{user.name}</h2>
+              <h2 className="truncate text-base font-semibold text-[#1D271F]">{user?.name}</h2>
 
-              <p className="truncate text-xs text-gray-500 sm:text-sm">{user.email}</p>
+              <p className="truncate text-xs text-gray-500 sm:text-sm">{user?.email}</p>
             </div>
           </div>
 
@@ -112,13 +109,13 @@ const ProfilePage = () => {
         <div className="mt-5 rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-5 sm:p-6">
           <h3 className="mb-6 text-sm font-bold text-[#1D271F]">তথ্য</h3>
 
-          <Form key={user.id} onSubmit={onSubmit} className="w-full">
+          <Form key={user?.id} onSubmit={onSubmit} className="w-full">
             {/* Name */}
             <TextField
               isRequired
               name="name"
               className="w-full"
-              defaultValue={user.name}
+              defaultValue={user?.name ?? ""}
               validate={(value) => {
                 if (value.trim().length < 3) {
                   return "নাম কমপক্ষে ৩ অক্ষরের হতে হবে";
@@ -133,7 +130,7 @@ const ProfilePage = () => {
             </TextField>
 
             {/* Image URL */}
-            <TextField name="image" className="mt-4 w-full" defaultValue={user.image ?? ""}>
+            <TextField name="image" className="mt-4 w-full" defaultValue={user?.image ?? ""}>
               <Label className="mb-1 text-sm font-medium text-[#1D271F]">প্রোফাইল ছবির URL</Label>
 
               <Input placeholder="https://example.com/profile.jpg" className="w-full rounded-lg border border-[#E1E8E1] bg-transparent px-3 text-sm text-[#1D271F]" />

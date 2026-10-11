@@ -61,8 +61,8 @@ const UserInfo = () => {
       <button type="button" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-label="প্রোফাইল মেনু" className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-gray-100">
         {/* User Image */}
         <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-gray-100">
-          {user.image ? (
-            <Image src={user.image} alt={user.name} fill sizes="36px" unoptimized className="object-cover" />
+          {user?.image ? (
+            <Image src={user?.image} alt={user?.name} fill sizes="36px" unoptimized className="object-cover" />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
               <FaUser className="text-gray-500" />
@@ -71,7 +71,7 @@ const UserInfo = () => {
         </div>
 
         {/* User Name */}
-        <span className="hidden max-w-28 truncate text-sm font-medium text-[#1D271F] sm:block">{user.name}</span>
+        <span className="hidden max-w-28 truncate text-sm font-medium text-[#1D271F] sm:block">{user?.name}</span>
 
         <FaChevronDown className="size-2 text-gray-500" />
       </button>
@@ -81,9 +81,9 @@ const UserInfo = () => {
         <div className="absolute right-0 top-full z-50 mt-2 w-60 rounded-2xl border border-[#E1E8E1] bg-[#FAFCFA] p-4 shadow-lg">
           {/* User Details */}
           <div>
-            <p className="truncate text-sm font-semibold text-[#1D271F]">{user.name}</p>
+            <p className="truncate text-sm font-semibold text-[#1D271F]">{user?.name}</p>
 
-            <p className="mt-1 truncate text-xs text-gray-500">{user.email}</p>
+            <p className="mt-1 truncate text-xs text-gray-500">{user?.email}</p>
           </div>
 
           {/* Dropdown Links */}
