@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
+import { FiChevronDown } from "react-icons/fi";
 
 export interface IProduct {
   id: number;
@@ -36,7 +37,7 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
 
   return (
     <div>
-      <div className="mb-3 flex w-full items-center justify-end gap-2 rounded-xl border border-[#E1E8E1] bg-[#FAFCFA] p-3 sm:p-3.5 lg:p-4">
+      {/* <div className="mb-3 flex w-full items-center justify-end gap-2 rounded-xl border border-[#E1E8E1] bg-[#FAFCFA] p-3 sm:p-3.5 lg:p-4">
         <span className="shrink-0 text-xs sm:text-sm">সাজান</span>
 
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="min-w-0 max-w-full rounded-lg border border-[#E1E8E1] bg-white px-2 py-2 text-xs sm:px-3 sm:text-sm">
@@ -44,6 +45,19 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
           <option value="low">দাম: কম থেকে বেশি</option>
           <option value="high">দাম: বেশি থেকে কম</option>
         </select>
+      </div> */}
+      <div className="mb-3 flex w-full items-center justify-end gap-2 rounded-xl border border-[#E1E8E1] bg-[#FAFCFA] p-3 sm:p-3.5 lg:p-4">
+        <span className="shrink-0 text-xs sm:text-sm">সাজান</span>
+
+        <div className="relative">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="min-w-0 max-w-full appearance-none rounded-lg border border-[#E1E8E1] bg-white py-2 pl-3 pr-9 text-xs sm:text-sm">
+            <option value="default">ডিফল্ট</option>
+            <option value="low">দাম: কম থেকে বেশি</option>
+            <option value="high">দাম: বেশি থেকে কম</option>
+          </select>
+
+          <FiChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm" />
+        </div>
       </div>
 
       <p className="ml-2 mt-4 mb-2 text-xs text-gray-500 sm:mt-5 sm:text-sm lg:mt-6">মোট {products.length.toLocaleString("bn-BD")} টি পণ্য দেখানো হচ্ছে</p>
